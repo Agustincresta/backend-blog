@@ -2,12 +2,12 @@
 
 var mongoose = require('mongoose');
 var app = require('./app');
-const  port =  server.listen(process.env.PORT || 3900);
+var port = process.env.PORT || 3900;
 
 mongoose.set('useFindAndModify', false)
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb://localhost:27017/api_rest_blog', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb+srv://Agustin:agustin00@cluster0.prfge.mongodb.net/api_rest_blog?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
 .then(() => {
     console.log("la conexion se ha realizado correctamente");
 
