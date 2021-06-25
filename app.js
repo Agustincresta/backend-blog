@@ -1,11 +1,17 @@
 'use strict'
 
 //cargar modulos
-var express = require('express');
+var express = require('express'),
+cors = require('cors'),
+app = express();
+
+app.use(cors());
+
+app.get(function(req,res){ 
+  res.send('hello');
+});
 
 
-//ejecutar express
-var app = express();
 
 //cargar ficheros de ruta
 var article_routes = require ('./routes/article')
@@ -25,8 +31,8 @@ app.use((req, res, next) => {
     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
     res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
     next();
-    
 });
+
 
 
 

@@ -38,7 +38,7 @@ var controller = {
                     var validate_title = !validator.isEmpty(params.title);
                     var validate_content = !validator.isEmpty(params.content);
                 }catch(err){
-                    return res.status(200).send({
+                    return res.status(404).send({
                         status: 'error',
                         message: 'faltan datos por enviar !!!'
                     });
@@ -54,7 +54,13 @@ var controller = {
  
                     article.title = params.title;
                     article.content = params.content;
-                    article.imagen = null;
+
+                    if (params.image) {
+                        article.image = params.image
+                    }else{
+                       article.image = null; 
+                    }
+                    
  
                 // Guardar el articulo
  
@@ -78,7 +84,7 @@ var controller = {
  
                 
                 }else{
-                    return res.status(200).send({
+                    return res.status(404).send({
                         status: 'error',
                         message: 'los datos no son validos'
             });
@@ -91,7 +97,7 @@ var controller = {
  
         var last = req.params.last;
         if(last || last != undefined){
-            query.limit(5);
+            query.limit(3);
         }
  
         // Find
@@ -152,8 +158,8 @@ var controller = {
             }
  
         // devolverlo en Json
-            return res.status(404).send({
-                status: 'succes',
+            return res.status(200).send({
+                status: 'success',
                 article
             });
  
@@ -197,7 +203,7 @@ var controller = {
                 }
  
                 return res.status(200).send({
-                    status: 'succes',
+                    status: 'success',
                     article: articleUpdated
                 });
             });
@@ -234,7 +240,7 @@ var controller = {
             }
  
             return res.status(200).send({
-                status: 'succes',
+                status: 'success',
                 article: articleRemoved
             });
         });        
@@ -297,6 +303,11 @@ var controller = {
                     });
                 });
                           
+            }else{
+                return res.status(200).send({
+                    status: 'success',
+                    image: file_name
+                });
             }
         }
     }, 
@@ -348,7 +359,7 @@ var controller = {
 
             
             return res.status(200).send({
-                status: 'succes',
+                status: 'success',
                 articles
             });
  
