@@ -7,7 +7,7 @@ var port = process.env.PORT || 3900;
 mongoose.set('useFindAndModify', false)
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb+srv://Agustin:agustin00@cluster0.prfge.mongodb.net/api_rest_blog?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb+srv://Agustin:aabbc@cluster0.prfge.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
 .then(() => {
     console.log("la conexion se ha realizado correctamente");
 
